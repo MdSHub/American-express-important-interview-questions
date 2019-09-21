@@ -494,7 +494,7 @@ realloc---to increase the previous alloted memory for above we define ptr and no
 ptr=realloc(ptr,newSize);
 
 
-Operating sysytem,C++,java.................................................................
+Operating sysytem,C++,java,computer Networks................................................................
 
 
 Find the number of sub-strings in a given string where each sub-string has the same character in beginning and end
@@ -834,9 +834,120 @@ First Search.
 
 os questions 
 What is the difference between Mutex and Binary Semaphore though they work same?
+What is difference between MAC address and IP address?
+48 bits mac and 32 bits IP
+mac is on NIC card,.IP is assigned by ISP
+ARP retrieve MAc and RARP retrieve IP.
 
 
 
+
+Difference between hub, switch and routers?
+hub braodcast message Layer 1 of OSI
+switch send data to specific location layer 2 off OSI
+Router is used to connect two networks layer 3 of OSI
+
+
+
+
+
+
+what isDHCP?
+A DHCP server enables computers to request IP addresses 
+and networking parameters automatically from the Internet service provider 
+
+
+
+
+
+What is piggybacking?
+In two-way communication, wherever a frame is received, the receiver waits and does not send the control frame (acknowledgement or ACK) back to the sender immediately.
+
+The receiver waits until its network layer passes in the next data packet. The delayed acknowledgement is then attached to this outgoing data frame.
+
+This technique of temporarily delaying the acknowledgement so that it can be hooked with next outgoing data frame is known as piggybacking.
+
+
+What is flooding in routers?
+Flooding is used in computer networks routing algorithm in which every incoming packet is sent through every outgoing link except the one it arrived on
+
+
+
+
+Explain 3 way handshake connection establishment process in TCP?
+TCP 3-way handshake
+
+To establish a connection, TCP uses a three-way handshake. Before a client attempts to connect with a server, the server must 
+first bind to and listen at a port to open it up for connections: this is called a passive open. Once the passive open is 
+established, a client may initiate an active open. To establish a connection, the three-way (or 3-step) handshake occurs:
+
+SYN(sequence number): The active open is performed by the client sending a SYN to the server. The client sets the segment's sequence number to
+a random value A.
+SYN-ACK: In response, the server replies with a SYN-ACK. The acknowledgment number is set to one more than the received
+sequence number i.e. A+1, and the sequence number that the server chooses for the packet is another random number, B.
+ACK: Finally, the client sends an ACK back to the server. The sequence number is set to the received acknowledgement value 
+i.e. A+1, and the acknowledgement number is set to one more than the received sequence number i.e. B+1.
+At this point, both the client and server have received an acknowledgment of the connection. The steps 1, 2 establish the 
+onnection parameter (sequence number) for one direction and it is acknowledged. The steps 2, 3 establish the connection 
+parameter (sequence number) for the other direction and it is acknowledged. With these, a full-duplex communication is 
+established.
+
+Number of subarrays having sum exactly equal to k?
+// with sum exactly equal to k. 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+// Function to find number of subarrays  
+// with sum exactly equal to k. 
+int findSubarraySum(int arr[], int n, int sum) 
+{ 
+    // STL map to store number of subarrays 
+    // starting from index zero having  
+    // particular value of sum. 
+    unordered_map<int, int> prevSum; 
+  
+    int res = 0; 
+  
+    // Sum of elements so far. 
+    int currsum = 0; 
+  
+    for (int i = 0; i < n; i++) { 
+  
+        // Add current element to sum so far. 
+        currsum += arr[i]; 
+  
+        // If currsum is equal to desired sum, 
+        // then a new subarray is found. So 
+        // increase count of subarrays. 
+        if (currsum == sum)  
+            res++;         
+  
+        // currsum exceeds given sum by currsum  
+        //  - sum. Find number of subarrays having  
+        // this sum and exclude those subarrays 
+        // from currsum by increasing count by  
+        // same amount. 
+        if (prevSum.find(currsum - sum) !=  
+                                  prevSum.end())  
+            res += (prevSum[currsum - sum]); 
+          
+  
+        // Add currsum value to count of  
+        // different values of sum. 
+        prevSum[currsum]++; 
+    } 
+  
+    return res; 
+} 
+  
+int main() 
+{ 
+    int arr[] = { 10, 2, -2, -20, 10 }; 
+    int sum = -10; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout << findSubarraySum(arr, n, sum); 
+    return 0; 
+} 
 
 
 
