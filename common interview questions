@@ -834,6 +834,8 @@ First Search.
 
 os questions 
 What is the difference between Mutex and Binary Semaphore though they work same?
+mutex is a locking mechanaism and semphaphore is a signalling mechansim
+
 What is difference between MAC address and IP address?
 48 bits mac and 32 bits IP
 mac is on NIC card,.IP is assigned by ISP
